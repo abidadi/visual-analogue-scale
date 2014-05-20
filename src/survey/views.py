@@ -14,5 +14,16 @@ def detail(request, survey_id):
     return render(request, 'survey/detail.html', {'survey': survey})
 
 def results(request, survey_id):
-    p = get_object_or_404(Survey, pk=survey_id)
-    return HttpResponse("Results.")
+    survey = get_object_or_404(Survey, pk=survey_id)
+
+    for verb in survey.verbs_set.all():
+        if (request.POST.get(verb.verb_text), None):
+            print "found!", verb.verb_text
+            v = Verbs.objects.get(survey=survey, verb_text=verb.verb_text)
+            if request.POST.get(verb.verb_text) == 'on':
+                v.verb_NA = True
+            else:
+                v.verb_scale = request.POST.get(verb.verb_text)
+            v.save()
+
+    return render(request, 'survey/results.html', {'survey': survey})

@@ -1,0 +1,21 @@
+{% extends "survey/base.html" %}
+
+{% block title %} Results - {{ survey.name }} {% endblock title %}
+
+{% block content %}
+
+<h3>Results for {{survey.name}}</h3>
+
+{% for verb in survey.verbs_set.all %}
+
+<p>
+    {% if verb.verb_NA %}
+        <strong>{{ verb.verb_text }}: </strong> N/A
+    {% else %}
+        <strong>{{ verb.verb_text }}: </strong> {{verb.verb_scale}}
+    {% endif %}
+</p>
+
+{% endfor %}
+
+{% endblock content %}
