@@ -17,11 +17,11 @@
                 <label name="verb_name" for="verbs{{ forloop.counter }}">{{ verbs.verb_text }}</label>
             </td>
             <td>
-                <input name="verb_check" type="checkbox" onclick="document.getElementById('verbs{{ forloop.counter }}').disabled=this.checked;">N/A</input>
+                <input name="{{verbs.verb_text}}" type="checkbox" onclick="document.getElementById('verbs{{ forloop.counter }}').disabled=this.checked;">N/A</input>
             </td>
             <td>
                 <label style="font-size: 10px;">Low</label>
-                <input name="verb_value" type="range" id="verbs{{ forloop.counter }}" min="0" max="100" value="0" step="0.1" style="width: 455px;"/>
+                <input name="{{verbs.verb_text}}" type="range" id="verbs{{ forloop.counter }}" min="0" max="100" value="0" step="0.1" style="width: 455px;"/>
                 <label style="font-size: 10px;">High</label>
             </td>
         </tr>
