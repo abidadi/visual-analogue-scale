@@ -24,8 +24,11 @@ class SurveyAdmin(admin.ModelAdmin):
         writer = csv.writer(f)
         writer.writerow(["name", "pub_date"])
 
+	#import pdb; pdb.set_trace()
+
         for s in queryset:
-        	writer.writerow([s.name, s.pub_date])
+		for verb in s.verbs_set.all():
+		      	writer.writerow([verb.verb_text,verb.verb_scale,verb.verb_NA])
 
         f.seek(0)
         response = HttpResponse(f, content_type='text/csv')
