@@ -65,7 +65,7 @@ DATABASES = {
     }
 }
 
-# Internationalization
+# Internationalizataaaion
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
@@ -84,15 +84,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#Template Location
-TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(BASE_DIR), "static", "templates"),
-)
-
 if DEBUG:
     MEDIA_URL = '/media/'
-    STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static-only")
-    MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media")
+    STATIC_ROOT = '/home/abidadi/webapps/vastatic/'
+    MEDIA_ROOT = '/home/abidadi/webapps/vastatic/media/'
     STATICFILES_DIRS = (
-        os.path.join(os.path.dirname(BASE_DIR), "static", "static"),
+        '/home/abidadi/webapps/vastatic/static/',
+    )
+    
+    #Template Location
+    TEMPLATE_DIRS = (
+        '/home/abidadi/webapps/vastatic/templates',
     )

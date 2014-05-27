@@ -23,11 +23,11 @@ class SurveyAdmin(admin.ModelAdmin):
     def download_csv(ModelAdmin, request, queryset):
         f = StringIO.StringIO()
         writer = csv.writer(f)
-        writer.writerow(["name", "value", "N/A", "survey"])
+        writer.writerow(["name", "pub_date"])
 
         for s in queryset:
-            for verb in s.verbs_set.all():
-                writer.writerow([verb.verb_text, verb.verb_scale, verb.verb_NA, verb.survey.name])
+		for verb in s.verbs_set.all():
+		      	writer.writerow([verb.verb_text,verb.verb_scale,verb.verb_NA])
 
         f.seek(0)
         response = HttpResponse(f, content_type='text/csv')
