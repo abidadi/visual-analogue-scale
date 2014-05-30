@@ -8,7 +8,7 @@
 <p>Please make sure to rate all the verbs listed below. Thank you so much for your time.</p>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'survey:results' survey.id %}" method="POST" name="survey" onSubmit="isValid()">
+<form action="{% url 'survey:results' survey.id %}" method="POST" name="survey">
 {% csrf_token %}
     <table style="width:1200px">
     {% for verbs in survey.verbs_set.all %}
