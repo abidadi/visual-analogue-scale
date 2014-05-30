@@ -20,11 +20,11 @@ def results(request, survey_id):
     
     for value in survey.verbs_set.all():
         if (request.POST.get(value.verb_text), None):
-            v = Verbs.objects.filter(survey=survey, verb_text=value.verb_text)
+            v = Verbs.objects.get(survey=survey, verb_text=value.verb_text)
             if request.POST.get(value.verb_text) == 'on':
                 v.verb_NA = True
             else:
                 v.verb_scale = request.POST.get(value.verb_text)
-            v.update()
+            v.save()
 
     return render(request, 'survey/results.html', {'survey': survey})
